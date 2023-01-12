@@ -20,8 +20,20 @@ Screen::~Screen() {
 }
 void Screen::read() {
 	cout << "Введем информацию об экране" << endl;
-	cout << "Диагональ(дюйм): ";
-	cin >> diagonal;
+	int p = 0;
+	while (p == 0) {
+		p = 1;
+		cout << "Диагональ(дюйм): ";
+		cin >> diagonal;
+		try {
+			if (diagonal < 0)
+				throw '0';
+		}
+		catch (char c) {
+			p = 0;
+			cout << "Неправильные данные, попробуйте ввести информацию заново" << endl;
+		}
+	}
 	cout << "Плотность пикселей(ppi): ";
 	cin >> pixel;
 }
